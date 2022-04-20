@@ -9,26 +9,12 @@
     </div>
     <!- ->
     <div class="chat-room">
-      <div class="chat-box">
-        <div class="message-info">
-          <div class="user-name">Tom</div>
-          <div class="post-time">2020/3/31(Wed) 12:43:30</div>
-        </div>
-        <div class="chat-text">おはよう</div>
-      </div>
-
-      <div class="chat-box">
-        <div class="message-info">
-          <div class="user-name">Tom</div>
-          <div class="post-time">2020/3/31(Wed) 12:43:30</div>
-        </div>
-        <div class="chat-text">こんばんは</div>
-      </div>
+      <%= render partial: "message", collection: @messages %>
     </div>
     <!- ->
-<%= form_with model:[@room, @message], class: "caht-form", local: true do |f| %>
+    <%= form_with model: [@room, @message], class: "chat-form", local: true do |f| %>
         <div class="form-box">
-          <%=f.text_field :content, class: "text-form", placeholder: "type a message" %>
+          <%= f.text_field :content, class: "text-form", placeholder: "type a message" %>
           <label class="form-image">
             <span class="image-file">画像</span>
             <%= f.file_field :image, class: "image-btn" %>
@@ -36,3 +22,4 @@
         </div>
         <%= f.submit "送信", class: "send-btn" %>
   <% end %>
+
